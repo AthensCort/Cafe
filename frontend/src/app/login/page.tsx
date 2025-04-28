@@ -1,4 +1,7 @@
 'use client'
+
+//SOLO APRA ACLARAR, STE TEMPLATE ME LO ROBE DE NUESTRO RETO (yo hce el front end) por eso no me tomo tanto tiempo
+//y por eso se ve asi, solo era mvoerle unas cosas ara ajustarlo al ejercicio
 import { useState } from "react";
 import { useRouter } from "next/navigation";  
 import { Button } from "@/components/ui/button";
