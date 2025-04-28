@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { useRouter } from "next/navigation";  // Importamos el useRouter de Next.js
+import { useRouter } from "next/navigation";  
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Background from "../background/page"; 
@@ -14,8 +14,7 @@ export default function SignUpForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const router = useRouter();  // Usamos useRouter para poder hacer la redirección
-
+    const router = useRouter();  
     const handleLogin = async (e: React.FormEvent) => {
       e.preventDefault();
 
@@ -31,8 +30,7 @@ export default function SignUpForm() {
         const data = await response.json();
 
         if (response.ok) {
-          // Redirigir al home en caso de éxito
-          router.push('/home');  // Usamos router.push para redirigir a la página home
+          router.push('/home');  
         } else {
           setErrorMessage(data.error || 'No se sabe qué pasó');
         }

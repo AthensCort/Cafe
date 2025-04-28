@@ -1,6 +1,3 @@
-import {} from "module";
-//Teemos que hacer esta cosa pq eamos en typescriot y se tiene que 
-//configurar los tipos
 export interface User {
     username: string;
     password: string;
