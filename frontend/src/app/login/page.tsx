@@ -1,14 +1,6 @@
-
-//Carolina de Jesus Ortega Cepeda 
-//A01282386
-
-//Codigo de login basado principalmente en el front end de nuesro trabajo 
-//final (ojo que yo hice el frontend), solo lo ado usando como base aqui
-//reutilizando codigo, como dirian
-
 'use client'
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";  // Importamos el useRouter de Next.js
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Background from "../background/page"; 
@@ -16,39 +8,39 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Eye, EyeOff } from "lucide-react";
 import styles from "./page.module.css";
 
-
 export default function SignUpForm() {
 
-    //METODO POST
     const [showPassword, setShowPassword] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-  
+    const router = useRouter();  // Usamos useRouter para poder hacer la redirección
+
     const handleLogin = async (e: React.FormEvent) => {
       e.preventDefault();
-  
+
       try {
-        const response = await fetch('http://localhost:3000/api/login', {
+        const response = await fetch('http://localhost:3001/api/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ username, password }),
         });
-  
+
         const data = await response.json();
-  
+
         if (response.ok) {
-          window.location.href = "/login";  
+          // Redirigir al home en caso de éxito
+          router.push('/home');  // Usamos router.push para redirigir a la página home
         } else {
-          setErrorMessage(data.error || 'No se sabe que pasho');
+          setErrorMessage(data.error || 'No se sabe qué pasó');
         }
       } catch (error) {
         setErrorMessage('Oye loco, no estas en la db');
       }
     };
-  
+
     return (
         <div className="h-screen w-full">
           <Background />
@@ -108,4 +100,4 @@ export default function SignUpForm() {
           </div>
         </div>
       );
-    }
+}
