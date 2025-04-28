@@ -1,5 +1,10 @@
 
+//Carolina de Jesus Ortega Cepeda 
+//A01282386
 
+//Codigo de login basado principalmente en el front end de nuesro trabajo 
+//final (ojo que yo hice el frontend), solo lo ado usando como base aqui
+//reutilizando codigo, como dirian
 
 'use client'
 import { useState } from "react";
@@ -23,25 +28,29 @@ export default function SignUpForm() {
       </div>
         <Card className={`${styles.card} w-full max-w-[400px] min-w-[280px] `}>
           <CardContent>
-            <h2 className={`${styles.title} text-[2rem]`}>Welcome back!</h2>
+          <h2 className={`${styles.title} text-[2rem]`}>Bienvenido!</h2>
+          <h2 className={`${styles.title} text-[2rem]`}>
+                Café Aurora! <br />
+                <span className="italic text-[1.0rem]">Membership exclusive</span>
+                </h2>
             <div className={styles["social-buttons"]}>
             </div>
           
             <div className="input-group space-y-4">
               <div>
-                <label className={styles.label}>Email</label>
+                <label className={styles.label}>Nombre de usuario</label>
                 <Input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Ingrese usuario"
                   className={styles.input}
                 />
               </div>
               <div>
-                <label className={styles.label}>Password</label>
+                <label className={styles.label}>Contraseña</label>
                 <div className="relative">
                   <Input
                     type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
+                    placeholder="Ingrese contraseña"
                     className={styles.input}
                   />
                   <button
@@ -54,7 +63,7 @@ export default function SignUpForm() {
                 </div>
               </div>
               <Link href="/dashboard">
-                <Button className={styles["submit-button"]}>Create account</Button>
+                <Button className={styles["submit-button"]}>Acceder</Button>
               </Link>
             </div>
           </CardContent>
