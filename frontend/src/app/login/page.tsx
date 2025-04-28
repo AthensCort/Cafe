@@ -16,28 +16,28 @@ export default function SignUpForm() {
     const [errorMessage, setErrorMessage] = useState('');
     const router = useRouter();  
     const handleLogin = async (e: React.FormEvent) => {
-      e.preventDefault();
+        e.preventDefault();
+      
+        try {
+          const response = await fetch('http://localhost:3001/api/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+          });
+          const data = await response.json();
 
-      try {
-        const response = await fetch('http://localhost:3001/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          router.push('/home');  
-        } else {
-          setErrorMessage(data.error || 'No se sabe qué pasó');
+          localStorage.setItem('mensajeBienvenida', data.message);
+          if (response.ok) { //con esto si lo encontraos ps se guarda para home y ponr el nombre
+            router.push('/home');  
+          } else {
+            setErrorMessage(data.error || 'No se sabe qué pasó');
+          }
+        } catch (error) {
+          setErrorMessage('Oye loco, no estas en la db');
         }
-      } catch (error) {
-        setErrorMessage('Oye loco, no estas en la db');
-      }
-    };
+      };
 
     return (
         <div className="h-screen w-full">

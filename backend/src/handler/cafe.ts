@@ -8,6 +8,7 @@ export const loginHandler = (req: Request, res: Response): void => {
 
   if (result.success) {
     res.status(200).json({
+        //Dentro de este mensaje escribo todo con l nombre completo y aparte tambien envia el umero de membresía
       message: `¡Hola, ${result.fullName}! Gracias por ser parte de Café Aurora`,
       membershipNumber: result.membershipNumber
     });
